@@ -52,6 +52,4 @@ class Start extends Component {
   }
 }
 
-
-
 export default Start;

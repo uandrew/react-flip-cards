@@ -48,7 +48,6 @@ class Game extends Component {
       </div>
     ) : null;
 
-    // Set characters
     const tiles = this.state.tiles.map((tile, index) => (
       <Tile
         key={index}
@@ -67,12 +66,5 @@ class Game extends Component {
     );
   }
 }
-
-/**
- * Proptypes
- */
-Game.propTypes = {
-  characters: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
-};
 
 export default Game;
