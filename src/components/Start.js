@@ -11,14 +11,14 @@ class Start extends Component {
       gameStarted: false,
       tiles: []
     };
-    this.startResetGame = this.startResetGame.bind(this); // Click events
+    this.startResetGame = this.startResetGame.bind(this);
   }
   // we need 4x4 field
   startResetGame() {
     const tiles = this.props.characters
       .slice(0)
       .sort(() => 0.5 - Math.random())
-      .slice(0, 4);
+      .slice(0, 8);
     this.setState({
       gameStarted: true,
       tiles

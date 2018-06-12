@@ -91,7 +91,7 @@ class Game extends Component {
       <div className="message">
         <h2>{`Great! You've fond a solution in ${
           this.state.attempts
-        } moves.`}</h2>
+        } rounds.`}</h2>
       </div>
     ) : null;
 
