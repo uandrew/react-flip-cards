@@ -6,12 +6,24 @@ import Tile from "./Tile";
 class Game extends Component {
   constructor(props) {
     super(props);
-    this.state = this.setInitialState(props.characters);
+    this.state = this.setInitialState(props.tiles);
     this.clickedTile = this.clickedTile.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState(this.setInitialState(nextProps.characters));
+  }
+
+  /* TODO: render some tiles in the beginning */
+  setTiles(tiles) {
+    return tiles.concat(tiles).reduce((array, current) => {
+      array.push({
+        tile: current,
+        selected: false,
+        matched: false
+      });
+      return array;
+    }, []);
   }
   setInitialState(tiles) {
     return {
@@ -23,8 +35,6 @@ class Game extends Component {
       attempts: 0
     };
   }
-  /* TODO: render some tiles in the beginning */
-
   // compare two tiles
   isMatch(firstTile, secondTile) {
     const tiles = this.state.tiles;
@@ -33,10 +43,48 @@ class Game extends Component {
     return tileOne === tileTwo;
   }
 
-  clickedTile() {
+  clickedTile(index) {
     if (this.state.paused) {
+      return;
     }
-    // Work with click
+    const tiles = this.state.tiles;
+    tiles[index].selected = true;
+    this.setState({
+      tiles,
+      paused: true
+    });
+    if (!this.state.selected && this.state.selected !== 0) {
+      this.setState({
+        selected: index,
+        paused: false
+      }); // Set state
+    } else {
+      const attempts = this.state.attempts + 1;
+      this.setState({ attempts });
+      if (this.isMatch(index, this.state.selected)) {
+        const matches = this.state.matches + 1;
+        tiles[index].matched = true;
+        tiles[this.state.selected].matched = true;
+        this.setState({
+          tiles,
+          selected: null,
+          paused: false,
+          matches,
+          gameEnded: matches === this.state.tiles.length / 2
+        });
+      } else {
+        // delay for tile to disappear
+        setTimeout(() => {
+          tiles[index].selected = false;
+          tiles[this.state.selected].selected = false;
+          this.setState({
+            tiles,
+            selected: null,
+            paused: false
+          });
+        }, 700);
+      }
+    }
   }
 
   render() {
