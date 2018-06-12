@@ -11,5 +11,7 @@ const Header = ({ button }) => (
     </div>
   </header>
 );
-
+Header.propTypes = {
+  button: PropTypes.element.isRequired
+};
 export default Header;

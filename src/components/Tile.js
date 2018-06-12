@@ -50,5 +50,11 @@ class Tile extends Component {
     );
   }
 }
-
+Tile.propTypes = {
+  tile: PropTypes.string.isRequired,
+  matched: PropTypes.bool.isRequired,
+  selected: PropTypes.bool.isRequired,
+  index: PropTypes.number.isRequired,
+  clickedCharacter: PropTypes.func.isRequired
+};
 export default Tile;

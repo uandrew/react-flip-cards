@@ -15,7 +15,7 @@ class Start extends Component {
   }
   // we need 4x4 field
   startResetGame() {
-    const tiles = this.props.tiles
+    const tiles = this.props.characters
       .slice(0)
       .sort(() => 0.5 - Math.random())
       .slice(0, 4);
@@ -51,5 +51,7 @@ class Start extends Component {
     );
   }
 }
-
+Start.propTypes = {
+  characters: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+};
 export default Start;

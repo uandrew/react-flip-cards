@@ -11,10 +11,9 @@ class Game extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState(this.setInitialState(nextProps.characters));
+    this.setState(this.setInitialState(nextProps.tiles));
   }
 
-  /* TODO: render some tiles in the beginning */
   setTiles(tiles) {
     return tiles.concat(tiles).reduce((array, current) => {
       array.push({
@@ -114,5 +113,7 @@ class Game extends Component {
     );
   }
 }
-
+Game.propTypes = {
+  tiles: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+};
 export default Game;
