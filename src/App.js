@@ -1,8 +1,11 @@
+// Import dependencies
 import React from "react";
 
-const App = () => (
-  <div>
-    <h1>Our game</h1>
-  </div>
-);
+// Import componets
+import Start from "./components/Start";
+
+import CHARACTERS from "./characters";
+
+const App = () => <Start characters={CHARACTERS} />;
+
 export default App;
