@@ -13,7 +13,7 @@ class Tile extends Component {
 
   characterClick() {
     if (!this.props.selected) {
-      this.props.clickedCharacter(this.props.index);
+      this.props.clickedTile(this.props.index);
     }
   }
 
@@ -55,6 +55,6 @@ Tile.propTypes = {
   matched: PropTypes.bool.isRequired,
   selected: PropTypes.bool.isRequired,
   index: PropTypes.number.isRequired,
-  clickedCharacter: PropTypes.func.isRequired
+  clickedTile: PropTypes.func.isRequired
 };
 export default Tile;
