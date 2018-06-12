@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
@@ -13,7 +14,6 @@ class Game extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState(this.setInitialState(nextProps.tiles));
   }
-
   setTiles(tiles) {
     return tiles.concat(tiles).reduce((array, current) => {
       array.push({
